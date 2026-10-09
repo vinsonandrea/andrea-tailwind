@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="dark">
 
@@ -5,85 +6,224 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss"> @custom-variant dark (&:where(.dark, .dark *));
+
+    <style type="text/tailwindcss">
+        @custom-variant dark (&:where(.dark, .dark *));
+
+        @layer components {
+            .bg-primary {
+                @apply bg-white dark:bg-slate-900;
+            }
+
+            .text-primary {
+                @apply text-slate-900 dark:text-white;
+            }
+
+            .text-secondary {
+                @apply text-orange-500 dark:text-orange-400;
+            }
+
+            .btn-primary {
+                @apply rounded-xl bg-black px-5 py-3 text-white
+                transition-colors duration-300 hover:bg-violet-700
+                dark:bg-slate-700 dark:hover:bg-slate-600;
+            }
+
+            .btn-secondary {
+                @apply rounded-xl bg-orange-500 px-5 py-3 text-white
+                transition-colors duration-300 hover:bg-orange-600;
+            }
+
+            .card-primary {
+            @apply flex-1 min-w-[280px] rounded-2xl
+            border border-violet-200 bg-white p-6
+            text-slate-800 shadow-sm
+            transition-all duration-300
+            hover:-translate-y-1 hover:border-violet-400
+            hover:shadow-xl hover:shadow-violet-500/10
+            dark:border-slate-700 dark:bg-slate-800
+            dark:text-white
+            max-[600px]:min-w-0;
+        }
+
+        
+
+            .card-secondary {
+            @apply flex-1 min-w-[280px] rounded-2xl
+            border border-amber-200 bg-amber-50 p-6
+            text-slate-800 shadow-sm
+            transition-all duration-300
+            hover:-translate-y-1 hover:border-amber-400
+            hover:shadow-xl hover:shadow-amber-500/10
+            dark:border-slate-700 dark:bg-slate-800
+            dark:text-white
+            max-[600px]:min-w-0;
+
+            }
+
+            .nav-link {
+                @apply transition-colors duration-200
+                hover:text-red-500 dark:hover:text-violet-400;
+            }
+
+            .form-input {
+                @apply w-full rounded-md border border-gray-300
+                bg-white p-2 text-slate-900 outline-none
+                transition focus:border-violet-500
+                focus:ring-2 focus:ring-violet-300;
+            }
+
+            .theme-button {
+                @apply rounded-xl bg-black px-5 py-3 text-white
+                transition-colors duration-300
+                hover:bg-violet-700;
+            }
+
+            .section-title {
+                @apply mb-3 text-xl font-bold;
+            }
+        }
+
+        @layer base {
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                @apply bg-white text-slate-900 transition-colors
+                duration-300 dark:bg-slate-900 dark:text-white;
+            }
+        }
     </style>
 </head>
 
-<body class="text-center dark:bg-slate-900 bg-white text-slate-900 dark:text-white">
-    <h1 class="text-3xl font-bold"> Andrea Ammell G. Vinson</h1>
+<body class="text-center">
+
+    <!-- Theme Buttons -->
+    <div class="my-5 flex justify-center gap-3">
+        <button id="switch" class="theme-button">
+            SWITCH
+        </button>
+
+        <button id="toggledark" class="theme-button">
+            Toggle Dark
+        </button>
+    </div>
+
+    <!-- Header -->
+    <h1 class="text-3xl font-bold">
+        Andrea Ammell G. Vinson
+    </h1>
 
     <header>
-        <h1 class="text-3xl text-red-500 font-bold underline">
-            Hello world!
-        </h1>
-        <nav class="flex justify-between items-center mx-[50px] max-[600px]:flex-col">
-            <span class="text-green-500 text-[50px]">
+        <h2 class="text-3xl font-bold text-red-500 underline">
+            Hello, World!
+        </h2>
+
+        <nav class="my-5 mx-8 flex items-center justify-between
+                    max-[600px]:flex-col max-[600px]:gap-4">
+            <span class="text-3xl font-medium sm:text-5xl">
                 @dreavinson
             </span>
-            <ul class="flex gap-5 list-none max-[600px]:flex-col">
-                <li><a href="#projects" class="hover:text-red-500">Projects</a></li>
-                <li><a href="#services" class="hover:text-red-300">Services</a></li>
-                <li><a href="#contact" class="hover:text-red-200">Contact Me</a></li>
+
+            <ul class="flex list-none gap-5 max-[600px]:flex-wrap
+                       max-[600px]:justify-center">
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#contact" class="nav-link">Contact Me</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="flex flex-wrap gap-[30px] p-[50px] m-[50px] max-[600px]:p-[15px]
-     max-[600px]:m-[10px]">
-        <!-- Projects -->
-        <section id="projects" class="flex-1 min-w-[280px] border-2 border-black p-5 
-        bg-pink-400 max-[600px]:min-w-0">
-            <h2 class="max-[768px]:text-[48px] max-[768px]:text-blue-500">
-                My Projects
-            </h2>
-            <p>
-                Personal portfolio, payroll system, company website,startup website, and compliance monitoring system.
-            </p>
-        </section>
-        <!-- Services -->
-        <section id="services" class="flex-1 min-w-[280px] border-2 border-gray-300 dark:border-slate-800 dark:bg-slate-900 p-5
-         bg-gray-500 max-[600px]:min-w-0">
-            <h2 class="max-[768px]:text-[48px] max-[768px]:text-blue-500">
-                My Services
-            </h2>
-            <p>
-                Website Creation, System Creation, AI Automation,Database Management, Project Management, Systems
-                Analyst
-            </p>
-        </section>
-        <!-- Contact -->
-        <section id="contact" class="flex-1 min-w-[280px] border-2 border-black p-5 
-        bg-violet-500 max-[600px]:min-w-0">
-            <h2 class="max-[768px]:text-[48px] max-[768px]:text-blue-500">
-                Let's build together!
-            </h2>
-            <form action="#" class="flex flex-col gap-5">
+    <!-- Main Content -->
+    <main class="mx-auto flex max-w-7xl flex-wrap gap-6 p-6
+                 sm:p-8 lg:p-12">
+
+      
+<!-- Projects -->
+<section id="projects" class="card-primary">
+    <h2 class="card-title">My Projects</h2>
+    <p>
+        Personal portfolio, payroll system, company website,
+        startup website, and compliance monitoring system.
+    </p>
+</section>
+
+<!-- Services -->
+<section id="services" class="card-secondary">
+    <h2 class="card-title">My Services</h2>
+    <p>
+        Website Creation, System Creation, AI Automation,
+        Database Management, Project Management, Systems Analyst.
+    </p>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="card-primary">
+    <h2 class="card-title">Let's Build Together!</h2>
+
+
+            <form id="contactForm" class="flex flex-col gap-3">
                 <label for="name">Name</label>
-                <input id="name" name="name" type="text" required class="border border-gray-400 p-2">
+                <input id="name" name="name" type="text"
+                       class="form-input"
+                       placeholder="Enter your name" required>
+
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" required class="border border-gray-400 p-2">
+                <input id="email" name="email" type="email"
+                       class="form-input"
+                       placeholder="Enter your email" required>
+
                 <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required class="border border-gray-400 p-2">
-                </textarea>
-                <button type="submit" class="bg-black text-white p-3 rounded-[15px] hover:bg-red-500">
+                <textarea id="message" name="message" rows="4"
+                          class="form-input"
+                          placeholder="Write your message..."
+                          required></textarea>
+
+                <button type="submit" class="btn-primary">
                     Send Message
                 </button>
+
+                <p id="formStatus" role="status" aria-live="polite"></p>
             </form>
         </section>
     </main>
-    <button id="switch"class="bg-black text-white p-(12px) rounded-[10px] transition-colors duration-500 ease-in-out hover:bg-pink-500">switch</button>
-    <button id="toggledark"class="bg-black text-white p-(12px) rounded-[10px] transition-colors duration-500 ease-in-out hover:bg-pink-500">Toggledark</button>
-    <script src="script.js"></script>
-    <script>
-        const toggleDarkButton = document.querySelector('#toggledark');
-        const html = document.querySelector('html');
 
-        toggleDarkButton.addEventListener('click', function(){
-            html.classList.toggle('dark');
-        });
+
+    <footer class="py-5 text-sm text-slate-500 dark:text-slate-400">
+        <p>
+            Andrea Ammell G. Vinson. 
+        </p>
+    </footer>
+
+   
+    <script>
+        const html = document.documentElement;
+        const darkButton = document.getElementById("toggledark");
+        const switchButton = document.getElementById("switch");
+
+        function toggleTheme() {
+            html.classList.toggle("dark");
+        }
+
+        darkButton.addEventListener("click", toggleTheme);
+        switchButton.addEventListener("click", toggleTheme);
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        document.getElementById("contactForm")
+            .addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                document.getElementById("formStatus").textContent =
+                    "Thank you! Email delivery is not configured yet.";
+
+                this.reset();
+            });
     </script>
 
 </body>
-
 </html>
