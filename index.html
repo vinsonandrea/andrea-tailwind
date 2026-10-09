@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss"> @custom-variant dark (&:where(.dark, .dark *));
+    </style>
 </head>
 
-<body class="text-center">
+<body class="text-center dark:bg-slate-900 bg-white text-slate-900 dark:text-white">
     <h1 class="text-3xl font-bold"> Andrea Ammell G. Vinson</h1>
-    <button id="switch" class="bg-black text-white px-3 py-3 rounded-[15px] transition-colors duration-500
-         hover:bg-red-500">
-        Switch
-    </button>
 
     <header>
         <h1 class="text-3xl text-red-500 font-bold underline">
@@ -44,7 +42,7 @@
             </p>
         </section>
         <!-- Services -->
-        <section id="services" class="flex-1 min-w-[280px] border-2 border-black p-5
+        <section id="services" class="flex-1 min-w-[280px] border-2 border-gray-300 dark:border-slate-800 dark:bg-slate-900 p-5
          bg-gray-500 max-[600px]:min-w-0">
             <h2 class="max-[768px]:text-[48px] max-[768px]:text-blue-500">
                 My Services
@@ -74,7 +72,18 @@
             </form>
         </section>
     </main>
+    <button id="switch"class="bg-black text-white p-(12px) rounded-[10px] transition-colors duration-500 ease-in-out hover:bg-pink-500">switch</button>
+    <button id="toggledark"class="bg-black text-white p-(12px) rounded-[10px] transition-colors duration-500 ease-in-out hover:bg-pink-500">Toggledark</button>
     <script src="script.js"></script>
+    <script>
+        const toggleDarkButton = document.querySelector('#toggledark');
+        const html = document.querySelector('html');
+
+        toggleDarkButton.addEventListener('click', function(){
+            html.classList.toggle('dark');
+        });
+    </script>
+
 </body>
 
 </html>
